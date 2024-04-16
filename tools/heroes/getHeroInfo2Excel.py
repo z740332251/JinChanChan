@@ -1,6 +1,9 @@
 # 非原创，代码参见https://blog.csdn.net/qq_44407005/article/details/136842353
 # 稍有改动，后期可能会进行更大的改动
 
+# TODO 预期应该会将英雄作为顶点，羁绊作为边生成一个图，这个图并不要求点与点必须按照边相连，隔着其他同羁绊的边相连也可以
+# 有向图，完全可以按照heroId作为有向图前后的依据，id越大星级越高·
+
 import pandas as pd
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
@@ -23,18 +26,22 @@ data = {
     "费用":[]
 }
 print(pd.__version__)
+# TODO 画之灵版本，每次版更需要重新捞数据
 stars = [
-    [1205, 1217],
-    [2195, 2310],
-    [3211, 3223],
-    [4201, 4215],
-    [5175, 5185]
+    [1205, 1217 + 1],
+    [2195, 2310 + 1],
+    [3211, 3223 + 1],
+    [4201, 4215 + 1],
+    [5175, 5185 + 1]
 ]
 
 df = pd.DataFrame(data)
 
+# stars里面已经按照费用去排列好了，直接使用索引即可
+priceNew = 0
 # 循环遍历英雄ID范围
 for star in stars:
+    priceNew += 1
     for hero_id in range(star[0], star[1]):
         try:
             # 构建URL
@@ -76,8 +83,8 @@ for star in stars:
                 "英雄技能": hero_skill,
                 "技能描述": hero_skill_description,
                 "属性信息": "\n".join(attributes_info),
-                "羁绊信息": "\n".join([name.text for name in synergy_names[1:]]),  # 跳过第一个元素（英雄技能）
-                "费用": price
+                "羁绊信息": ",".join([name.text for name in synergy_names[1:]]),  # 跳过第一个元素（英雄技能）
+                "费用": priceNew
             }
 
             # 将字典转换为DataFrame并追加到现有DataFrame
