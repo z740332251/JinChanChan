@@ -1,0 +1,10 @@
+# 环境-windows
+- 安装nvm-windows来管理nodejs(https://juejin.cn/post/6844903861308637192)
+本次采用 1.1.12
+nodejs  v20.12.2
+- 安装vue(https://cli.vuejs.org/zh/guide/installation.html)
+本次采用 5.0.8
+
+# 测试时启动
+cd jinchanchan-client
+npm run serve
