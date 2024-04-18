@@ -22,4 +22,5 @@ jinchanchan-client/*.njsproj
 jinchanchan-client/*.sln
 jinchanchan-client/*.sw?
 
-tools/heros/*.csv
+tools/heroes/*.csv
+tools/heroes/*.xlsx
