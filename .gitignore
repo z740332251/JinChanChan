@@ -1,0 +1,25 @@
+.DS_Store
+jinchanchan-client/node_modules
+jinchanchan-client//dist
+
+
+# local env files
+jinchanchan-client/.env.local
+jinchanchan-client/.env.*.local
+
+# Log files
+jinchanchan-client/npm-debug.log*
+jinchanchan-client/yarn-debug.log*
+jinchanchan-client/yarn-error.log*
+jinchanchan-client/pnpm-debug.log*
+
+# Editor directories and files
+jinchanchan-client/.idea
+jinchanchan-client/.vscode
+jinchanchan-client/*.suo
+jinchanchan-client/*.ntvs*
+jinchanchan-client/*.njsproj
+jinchanchan-client/*.sln
+jinchanchan-client/*.sw?
+
+tools/heros/*.csv
